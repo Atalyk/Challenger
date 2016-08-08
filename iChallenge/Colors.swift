@@ -49,4 +49,8 @@ extension UIColor {
     func sporColor() -> UIColor {
         return UIColor(red: 243/255, green: 156/255, blue: 18/255, alpha: 1.0)
     }
+    func econColor() -> UIColor {
+        return UIColor(red: 190/255, green: 144/255, blue: 212/255, alpha: 1.0)
+    }
+
 }

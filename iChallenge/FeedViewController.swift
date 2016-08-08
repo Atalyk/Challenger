@@ -18,8 +18,8 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var statisticView = UIView()
     var brainView: BrainView!
     var reorderView: ReorderView!
-    var topics = ["Biology", "Mathematics", "Physics", "Chemistry", "Literature", "Technology", "Geography", "Art", "Sport"]
-    var colors = [UIColor.bioColor(UIColor()), UIColor.mathColor(UIColor()), UIColor.physColor(UIColor()), UIColor.litColor(UIColor()), UIColor.geoColor(UIColor()), UIColor.techColor(UIColor()), UIColor.chemColor(UIColor()), UIColor.artColor(UIColor()), UIColor.sporColor(UIColor())]
+    var topics = ["Biology", "Mathematics", "Physics", "Chemistry", "Literature", "Technology", "Geography", "Art & Culture", "Sport", "Economics"]
+    var colors = [UIColor.bioColor(UIColor()), UIColor.mathColor(UIColor()), UIColor.physColor(UIColor()), UIColor.litColor(UIColor()), UIColor.geoColor(UIColor()), UIColor.techColor(UIColor()), UIColor.chemColor(UIColor()), UIColor.artColor(UIColor()), UIColor.sporColor(UIColor()), UIColor.econColor(UIColor())]
     var imagesUrls = [String]()
     var sources = [String]()
     var deadlineLabel = UILabel()
@@ -45,17 +45,6 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        for family: String in UIFont.familyNames()
-        {
-            print("\(family)")
-            for names: String in UIFont.fontNamesForFamilyName(family)
-            {
-                print("== \(names)")
-            }
-        }
- 
         
         setup()
         
@@ -99,6 +88,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
             })
         } else {
             self.topics = self.reorderView.topics
+            self.colors = self.reorderView.colors
             loadImages()
             loadScore()
         }
@@ -113,7 +103,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func reloadData() {
         
-        if imagesUrls.count < 9 {
+        if imagesUrls.count < topics.count {
         let query = PFQuery(className:"Challenge")
         query.whereKey("topic", equalTo: topics[imagesUrls.count])
         query.findObjectsInBackgroundWithBlock {
@@ -134,6 +124,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 }
             } else {
                 // Log details of the failure
+                self.refreshControl.endRefreshing()
                 print("Error: \(error!) \(error!.userInfo)")
             }
         }
@@ -191,6 +182,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func showMenuChallenges() {
+        print("showMenuChallenges")
         if showMenu == true {
             self.collectionView.scrollEnabled = false
             UIView.animateWithDuration(0.5, animations: {[weak self] in
@@ -210,7 +202,9 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     @IBAction func menuButtonPressed(sender: UIBarButtonItem) {
-        showMenuChallenges()
+        if self.collectionView.frame.origin.y == 0 {
+            showMenuChallenges()
+        }
     }
     
     @IBAction func dashboardButtonPressed(sender: UIBarButtonItem) {
@@ -226,8 +220,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
-    /*
-    @IBAction func signOutButtonPressed(sender: UIBarButtonItem) {
+    func signOutButtonPressed() {
         PFUser.logOut()
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -235,10 +228,9 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
             self.presentViewController(viewController, animated: true, completion: nil)
         })
     }
-    */
+    
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
-        
         if UIScreen.mainScreen().bounds.width < UIScreen.mainScreen().bounds.height {
             if let swipeGesture = gesture as? UISwipeGestureRecognizer {
                 
@@ -257,7 +249,14 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         self!.collectionView.frame = CGRectMake(0, 0, self!.screenWidth, self!.screenHeight)
                         })
                     showMenu = true
-                    print("There is a bug")
+                    self.collectionView.scrollEnabled = true
+                case UISwipeGestureRecognizerDirection.Right:
+                    UIView.animateWithDuration(0.5, animations: {[weak self] in
+                        self!.reorderView.frame = CGRectMake(0, 0, self!.screenWidth * 0.5, self!.screenHeight)
+                        self!.collectionView.frame = CGRectMake(self!.screenWidth * 0.5, 0, self!.screenWidth, self!.screenHeight)
+                        })
+                    showMenu = false
+                    self.collectionView.scrollEnabled = false
                 default:
                     break
                 }
@@ -298,13 +297,13 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func animateNumberFailed() {
-        incrementFailed = incrementFailed + 1
         if self.point != 0 {
             self.brainView.totalLabel.text = "\(incrementFailed)%"
         }
         if incrementFailed == (self.completed-self.point)*10 {
             timerFailed.invalidate()
         }
+        incrementFailed = incrementFailed + 1
     }
     
     func startTimerFailed() {
@@ -325,6 +324,10 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
         self.view.addGestureRecognizer(swipeLeft)
         
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(_:)))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+        self.view.addGestureRecognizer(swipeRight)
+        
         imageBackgroundView = UIImageView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
         imageBackgroundView.image = UIImage(named: "earth")
         imageBackgroundView.contentMode = .ScaleAspectFill
@@ -335,9 +338,9 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.view.addSubview(layerBackgroundView)
         
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSizeMake(screenWidth, screenHeight*0.35)
+        layout.itemSize = CGSizeMake(screenWidth*0.99, screenHeight*0.35)
         layout.minimumLineSpacing = screenWidth * 0.005
-        collectionView = UICollectionView(frame: CGRect(x: screenWidth * 0.05, y: 0.0, width: screenWidth*0.9, height: screenHeight), collectionViewLayout: layout)
+        collectionView = UICollectionView(frame: CGRect(x: screenWidth * 0.005, y: 0.0, width: screenWidth*0.99, height: screenHeight), collectionViewLayout: layout)
         self.collectionView.contentInset = UIEdgeInsetsZero
         self.view.addSubview(collectionView)
         
@@ -350,22 +353,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         statisticView = UIView(frame: CGRect(x: 0, y: screenHeight, width: screenWidth, height: screenHeight))
         statisticView.layer.backgroundColor = UIColor.blackColor().CGColor
         self.view.addSubview(statisticView)
-        
-        updateViewConstraints()
-    }
-    
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
-        
-        let screenHeight = UIScreen.mainScreen().bounds.height
-        let screenWidth = UIScreen.mainScreen().bounds.width
-        
-        collectionView.snp_makeConstraints { (make) -> Void in
-            make.top.equalTo(screenWidth * 0.005)
-            make.width.equalTo(screenWidth * 0.99)
-            make.height.equalTo(screenHeight)
-            make.centerX.equalTo(self.view.snp_centerX)
-        }
+ 
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -378,7 +366,8 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ChallengeCell", forIndexPath: indexPath) as! ChallengeCollectionViewCell
-        if imagesUrls.count > 0 {
+        if imagesUrls.count == topics.count {
+            print(imagesUrls.count)
             if let imageUrl = self.imagesUrls[indexPath.row] as? String {
                 cell.imageView.loadImageFromURLString(imageUrl, placeholderImage: UIImage(named: ""), completion: nil)
             }

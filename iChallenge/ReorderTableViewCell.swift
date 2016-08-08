@@ -42,14 +42,14 @@ class ReorderTableViewCell: UITableViewCell {
             
             challengeLabel.snp_makeConstraints { (make) -> Void in
                 make.top.equalTo(0)
-                make.left.equalTo(screenWidth*0.1)
+                make.left.equalTo(screenWidth*0.15)
                 make.bottom.equalTo(self.contentView.snp_bottom)
                 make.width.equalTo(self.contentView.snp_width)
                 make.height.equalTo(self.contentView.bounds.height)
             }
             
             circleView.snp_makeConstraints { (make) in
-                make.left.equalTo(5)
+                make.left.equalTo(screenWidth*0.05)
                 make.width.equalTo(screenWidth*0.04)
                 make.height.equalTo(screenWidth*0.04)
                 make.centerY.equalTo(self.challengeLabel.snp_centerY)

@@ -7,4 +7,5 @@ pod 'RAMAnimatedTabBarController'
 pod 'Parse'
 pod 'KFSwiftImageLoader', '~> 2.0'
 pod 'PullToBounce'
+pod 'NVActivityIndicatorView'
 end

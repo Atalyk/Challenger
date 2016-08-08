@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "84C718911D1D40EE00965C75"
-               BuildableName = "iChallenge.app"
+               BuildableName = "Challenger.app"
                BlueprintName = "iChallenge"
                ReferencedContainer = "container:iChallenge.xcodeproj">
             </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "84C718911D1D40EE00965C75"
-            BuildableName = "iChallenge.app"
+            BuildableName = "Challenger.app"
             BlueprintName = "iChallenge"
             ReferencedContainer = "container:iChallenge.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "84C718911D1D40EE00965C75"
-            BuildableName = "iChallenge.app"
+            BuildableName = "Challenger.app"
             BlueprintName = "iChallenge"
             ReferencedContainer = "container:iChallenge.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "84C718911D1D40EE00965C75"
-            BuildableName = "iChallenge.app"
+            BuildableName = "Challenger.app"
             BlueprintName = "iChallenge"
             ReferencedContainer = "container:iChallenge.xcodeproj">
          </BuildableReference>

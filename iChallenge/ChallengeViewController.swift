@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import Parse
+import NVActivityIndicatorView
 
 class ChallengeViewController: UIViewController {
     
@@ -45,6 +46,7 @@ class ChallengeViewController: UIViewController {
         self.edgesForExtendedLayout = UIRectEdge.None
         setup()
         queryChallenge(topic)
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -145,16 +147,37 @@ class ChallengeViewController: UIViewController {
     
     func checkChallengeAnswered() {
         if self.checked == true {
-            answerButtonOne.layer.backgroundColor = UIColor.lightGrayColor().CGColor
-            answerButtonOne.setTitleColor(UIColor.whiteColor(), forState: .Normal)
             
-            answerButtonTwo.layer.backgroundColor = UIColor.lightGrayColor().CGColor
+            if answerButtonOne.titleLabel?.text == answerText {
+                answerButtonOne.layer.backgroundColor = UIColor.mathColor(UIColor())().CGColor
+            } else {
+                answerButtonOne.layer.backgroundColor = UIColor.lightGrayColor().CGColor
+            }
+            
+            answerButtonOne.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+                
+            if answerButtonTwo.titleLabel?.text == answerText {
+                answerButtonTwo.layer.backgroundColor = UIColor.mathColor(UIColor())().CGColor
+            } else {
+                answerButtonTwo.layer.backgroundColor = UIColor.lightGrayColor().CGColor
+            }
+            
             answerButtonTwo.setTitleColor(UIColor.whiteColor(), forState: .Normal)
             
-            answerButtonThree.layer.backgroundColor = UIColor.lightGrayColor().CGColor
+            if answerButtonThree.titleLabel?.text == answerText {
+                answerButtonThree.layer.backgroundColor = UIColor.mathColor(UIColor())().CGColor
+            } else {
+                answerButtonThree.layer.backgroundColor = UIColor.lightGrayColor().CGColor
+            }
+            
             answerButtonThree.setTitleColor(UIColor.whiteColor(), forState: .Normal)
             
-            answerButtonFour.layer.backgroundColor = UIColor.lightGrayColor().CGColor
+            if answerButtonFour.titleLabel?.text == answerText {
+                answerButtonFour.layer.backgroundColor = UIColor.mathColor(UIColor())().CGColor
+            } else {
+                answerButtonFour.layer.backgroundColor = UIColor.lightGrayColor().CGColor
+            }
+            
             answerButtonFour.setTitleColor(UIColor.whiteColor(), forState: .Normal)
             
             toggleButtons(false)
@@ -163,11 +186,11 @@ class ChallengeViewController: UIViewController {
     
     func answerChallenge(button: UIButton) {
         if button.titleLabel?.text == answerText {
-            button.layer.backgroundColor = UIColor.greenColor().CGColor
+            button.layer.backgroundColor = UIColor.mathColor(UIColor())().CGColor
             button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
             point = 1
         } else {
-            button.layer.backgroundColor = UIColor(red: 244/255, green: 68/255, blue: 109/255, alpha: 1.0).CGColor
+            button.layer.backgroundColor = UIColor.bioColor(UIColor())().CGColor
             button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
             point = 0
         }
@@ -182,13 +205,23 @@ class ChallengeViewController: UIViewController {
     }
     
     func goToSourceSite() {
-        UIApplication.sharedApplication().openURL(NSURL(string: self.source)!)
+        self.performSegueWithIdentifier("SegueArticle", sender: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "SegueArticle" {
+            let articleViewController = segue.destinationViewController as! ArticleViewController
+            
+            articleViewController.urlString  = source
+        }
     }
 
     func setup() {
         
         let screenWidth = UIScreen.mainScreen().bounds.width
         let screenHeight = UIScreen.mainScreen().bounds.height
+        
+       
         
         imageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: screenWidth, height: screenHeight))
         imageView.image = UIImage(named: "background")
@@ -211,28 +244,24 @@ class ChallengeViewController: UIViewController {
         
         answerButtonOne.backgroundColor = UIColor.whiteColor()
         answerButtonOne.layer.cornerRadius = 10
-        answerButtonOne.setTitle("True", forState: .Normal)
         answerButtonOne.setTitleColor(UIColor.blackColor(), forState: .Normal)
         answerButtonOne.addTarget(self, action: #selector(answerChallenge(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(answerButtonOne)
         
         answerButtonTwo.backgroundColor = UIColor.whiteColor()
         answerButtonTwo.layer.cornerRadius = 10
-        answerButtonTwo.setTitle("False", forState: .Normal)
         answerButtonTwo.setTitleColor(UIColor.blackColor(), forState: .Normal)
         answerButtonTwo.addTarget(self, action: #selector(answerChallenge(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(answerButtonTwo)
         
         answerButtonThree.backgroundColor = UIColor.whiteColor()
         answerButtonThree.layer.cornerRadius = 10
-        answerButtonThree.setTitle("True", forState: .Normal)
         answerButtonThree.setTitleColor(UIColor.blackColor(), forState: .Normal)
         answerButtonThree.addTarget(self, action: #selector(answerChallenge(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(answerButtonThree)
         
         answerButtonFour.backgroundColor = UIColor.whiteColor()
         answerButtonFour.layer.cornerRadius = 10
-        answerButtonFour.setTitle("False", forState: .Normal)
         answerButtonFour.setTitleColor(UIColor.blackColor(), forState: .Normal)
         answerButtonFour.addTarget(self, action: #selector(answerChallenge(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(answerButtonFour)

@@ -10,6 +10,7 @@
 		84357DAD1D562B10006B900B /* Cottons Light DEMO.otf in Resources */ = {isa = PBXBuildFile; fileRef = 84357DAC1D562B10006B900B /* Cottons Light DEMO.otf */; };
 		84357DAF1D56535B006B900B /* Pacifico.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84357DAE1D56535B006B900B /* Pacifico.ttf */; };
 		843F2BBD1D4B81D900FC61EB /* BrainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F2BBC1D4B81D900FC61EB /* BrainView.swift */; };
+		843F8F571D58F0FD00578F88 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F8F561D58F0FD00578F88 /* ArticleViewController.swift */; };
 		844062931D56DA070021332B /* ReorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844062921D56DA070021332B /* ReorderView.swift */; };
 		845086101D56E3FE00929F2E /* ReorderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450860F1D56E3FE00929F2E /* ReorderTableViewCell.swift */; };
 		8450A3E41D52D83000B1C80F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450A3E31D52D83000B1C80F /* LoginViewController.swift */; };
@@ -49,13 +50,14 @@
 		84357DAC1D562B10006B900B /* Cottons Light DEMO.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cottons Light DEMO.otf"; sourceTree = "<group>"; };
 		84357DAE1D56535B006B900B /* Pacifico.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pacifico.ttf; sourceTree = "<group>"; };
 		843F2BBC1D4B81D900FC61EB /* BrainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrainView.swift; sourceTree = "<group>"; };
+		843F8F561D58F0FD00578F88 /* ArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		844062921D56DA070021332B /* ReorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReorderView.swift; sourceTree = "<group>"; };
 		8450860F1D56E3FE00929F2E /* ReorderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReorderTableViewCell.swift; sourceTree = "<group>"; };
 		8450A3E31D52D83000B1C80F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8450A3E51D52D84300B1C80F /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		845BAD921D1E8C0400DAEE64 /* ChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
 		84A994991D23891D00F32E27 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		84C718921D1D40EE00965C75 /* iChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84C718921D1D40EE00965C75 /* Challenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C718951D1D40EE00965C75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C7189A1D1D40EE00965C75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84C7189C1D1D40EE00965C75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -116,7 +118,7 @@
 		84C718931D1D40EE00965C75 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				84C718921D1D40EE00965C75 /* iChallenge.app */,
+				84C718921D1D40EE00965C75 /* Challenger.app */,
 				84C718A61D1D40EF00965C75 /* iChallengeTests.xctest */,
 				84C718B11D1D40EF00965C75 /* iChallengeUITests.xctest */,
 			);
@@ -173,6 +175,7 @@
 				845BAD921D1E8C0400DAEE64 /* ChallengeViewController.swift */,
 				8450A3E31D52D83000B1C80F /* LoginViewController.swift */,
 				8450A3E51D52D84300B1C80F /* RegisterViewController.swift */,
+				843F8F561D58F0FD00578F88 /* ArticleViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -233,7 +236,7 @@
 			);
 			name = iChallenge;
 			productName = iChallenge;
-			productReference = 84C718921D1D40EE00965C75 /* iChallenge.app */;
+			productReference = 84C718921D1D40EE00965C75 /* Challenger.app */;
 			productType = "com.apple.product-type.application";
 		};
 		84C718A51D1D40EF00965C75 /* iChallengeTests */ = {
@@ -405,6 +408,7 @@
 				84C718CB1D1D41CF00965C75 /* ChallengeCollectionViewCell.swift in Sources */,
 				84A9949A1D23891D00F32E27 /* Colors.swift in Sources */,
 				8450A3E61D52D84300B1C80F /* RegisterViewController.swift in Sources */,
+				843F8F571D58F0FD00578F88 /* ArticleViewController.swift in Sources */,
 				84C718C91D1D41AC00965C75 /* FeedViewController.swift in Sources */,
 				845BAD931D1E8C0400DAEE64 /* ChallengeViewController.swift in Sources */,
 				84C718961D1D40EE00965C75 /* AppDelegate.swift in Sources */,
@@ -481,7 +485,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -500,9 +505,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = Challenger;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -525,7 +531,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -538,8 +545,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Challenger;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -550,12 +558,12 @@
 			baseConfigurationReference = A28913FDD515446A6458DE73 /* Pods-iChallenge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				INFOPLIST_FILE = iChallenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.calc.aakash.iChallenge;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.aatalyk.challenger;
+				PRODUCT_NAME = Challenger;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -565,12 +573,12 @@
 			baseConfigurationReference = EE73AC05A14FABEA222E505E /* Pods-iChallenge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				INFOPLIST_FILE = iChallenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.calc.aakash.iChallenge;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.aatalyk.challenger;
+				PRODUCT_NAME = Challenger;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;

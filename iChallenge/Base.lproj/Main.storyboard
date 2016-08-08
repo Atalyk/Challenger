@@ -3,12 +3,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Challenges-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="Feed" id="BYZ-38-t0r" customClass="FeedViewController" customModule="iChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Feed" id="BYZ-38-t0r" customClass="FeedViewController" customModule="Challenger" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -44,7 +46,7 @@
         <!--Challenge View Controller-->
         <scene sceneID="Yl6-18-9Gr">
             <objects>
-                <viewController id="e64-VC-owR" customClass="ChallengeViewController" customModule="iChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="e64-VC-owR" customClass="ChallengeViewController" customModule="Challenger" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M24-bC-A5Q"/>
                         <viewControllerLayoutGuide type="bottom" id="bjj-8i-cyQ"/>
@@ -54,15 +56,73 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="kgo-YY-UfK" kind="show" identifier="SegueArticle" id="l89-0y-Pev"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zIf-jz-UiV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1785" y="-391"/>
         </scene>
+        <!--Article View Controller-->
+        <scene sceneID="xca-EB-OrD">
+            <objects>
+                <viewController id="kgo-YY-UfK" customClass="ArticleViewController" customModule="Challenger" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AYg-sV-eZT"/>
+                        <viewControllerLayoutGuide type="bottom" id="LjA-Qp-7Ok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oId-FJ-yk8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Otb-Hi-xn3" userLabel="activityIndicatorView" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Otb-Hi-xn3" firstAttribute="leading" secondItem="oId-FJ-yk8" secondAttribute="leading" id="CU7-J7-phL"/>
+                            <constraint firstItem="Otb-Hi-xn3" firstAttribute="bottom" secondItem="LjA-Qp-7Ok" secondAttribute="top" id="Mga-0q-BgA"/>
+                            <constraint firstAttribute="trailing" secondItem="Otb-Hi-xn3" secondAttribute="trailing" id="gNr-YR-0oI"/>
+                            <constraint firstItem="Otb-Hi-xn3" firstAttribute="top" secondItem="oId-FJ-yk8" secondAttribute="topMargin" constant="-64" id="vNB-2f-sF1"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Otb-Hi-xn3"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="CU7-J7-phL"/>
+                                <exclude reference="Mga-0q-BgA"/>
+                                <exclude reference="gNr-YR-0oI"/>
+                                <exclude reference="vNB-2f-sF1"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Otb-Hi-xn3"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="CU7-J7-phL"/>
+                                <include reference="Mga-0q-BgA"/>
+                                <include reference="gNr-YR-0oI"/>
+                                <include reference="vNB-2f-sF1"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="Otb-Hi-xn3" id="0uM-QE-EMo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WTW-Oe-k5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2472" y="-391"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="fzn-1H-ku2">
             <objects>
-                <viewController storyboardIdentifier="Login" id="xfz-wz-87x" customClass="LoginViewController" customModule="iChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="xfz-wz-87x" customClass="LoginViewController" customModule="Challenger" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="opv-Ek-hHK"/>
                         <viewControllerLayoutGuide type="bottom" id="Fwy-Nd-J1j"/>
@@ -75,12 +135,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LBT-8U-nRW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2508" y="-391"/>
+            <point key="canvasLocation" x="-312" y="-391"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="fXZ-be-JjA">
             <objects>
-                <viewController storyboardIdentifier="Register" id="eIL-sy-pFu" customClass="RegisterViewController" customModule="iChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Register" id="eIL-sy-pFu" customClass="RegisterViewController" customModule="Challenger" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NvA-Qn-UAs"/>
                         <viewControllerLayoutGuide type="bottom" id="kUQ-QU-6ec"/>
@@ -93,7 +153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nfj-MW-Hrc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3174" y="-391"/>
+            <point key="canvasLocation" x="-978" y="-391"/>
         </scene>
         <!--Home-->
         <scene sceneID="SeT-vj-XFi">

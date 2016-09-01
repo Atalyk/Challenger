@@ -16,7 +16,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -52,7 +52,7 @@
                         <viewControllerLayoutGuide type="bottom" id="bjj-8i-cyQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FFS-qr-U1j">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -73,11 +73,11 @@
                         <viewControllerLayoutGuide type="bottom" id="LjA-Qp-7Ok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oId-FJ-yk8">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Otb-Hi-xn3" userLabel="activityIndicatorView" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -136,6 +136,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LBT-8U-nRW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-312" y="-391"/>
+        </scene>
+        <!--Reset View Controller-->
+        <scene sceneID="dek-om-TkP">
+            <objects>
+                <viewController storyboardIdentifier="ResetPassword" id="1i4-F8-aBT" customClass="ResetViewController" customModule="Challenger" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hqd-OF-P3c"/>
+                        <viewControllerLayoutGuide type="bottom" id="4pn-93-180"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mhb-5M-71p">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6YA-wf-Cbl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1660" y="-391"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="fXZ-be-JjA">

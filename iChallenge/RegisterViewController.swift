@@ -29,6 +29,9 @@ class RegisterViewController: UIViewController {
         
         //keyboardDidShow
         setup()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -94,6 +97,11 @@ class RegisterViewController: UIViewController {
             let navController = UINavigationController(rootViewController: VC1) // Creating a navigation controller with VC1 at the root of the navigation stack.
             self.presentViewController(navController, animated:true, completion: nil)
         }
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     func setup() {

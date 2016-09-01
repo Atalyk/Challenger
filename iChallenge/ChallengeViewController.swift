@@ -30,6 +30,9 @@ class ChallengeViewController: UIViewController {
     var imageBrainView = UIImageView()
     var challenge: PFObject!
     
+    var buttonOffset = 5
+    var buttonHeight = 40
+    
     var layerView: UIView!
     var imageView: UIImageView!
     var visualEffectView: UIVisualEffectView!
@@ -44,9 +47,22 @@ class ChallengeViewController: UIViewController {
 
         self.automaticallyAdjustsScrollViewInsets = false
         self.edgesForExtendedLayout = UIRectEdge.None
+        
+        if (UIDevice.currentDevice().userInterfaceIdiom == .Pad)
+        {
+            buttonOffset = 1
+            buttonHeight = 20
+            print("iPad")
+        }
+        
+        print("\(screenHeight) x \(screenWidth)")
+        
         setup()
         queryChallenge(topic)
-
+        
+        
+        
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -194,6 +210,7 @@ class ChallengeViewController: UIViewController {
             button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
             point = 0
         }
+        toggleButtons(false)
         updateChallenge()
     }
     
@@ -303,35 +320,35 @@ class ChallengeViewController: UIViewController {
         }
         
         answerButtonOne.snp_makeConstraints { (make) -> Void in
-            make.height.equalTo(44)
+            make.height.equalTo(buttonHeight)
             make.width.equalTo(screenWidth * 0.6)
-            make.top.equalTo(self.challengeTextView.snp_bottom).offset(10)
+            make.top.equalTo(self.challengeTextView.snp_bottom).offset(buttonOffset)
             make.centerX.equalTo(self.view.snp_centerX)
         }
         
         answerButtonTwo.snp_makeConstraints { (make) -> Void in
-            make.height.equalTo(44)
+            make.height.equalTo(buttonHeight)
             make.width.equalTo(screenWidth * 0.6)
-            make.top.equalTo(self.answerButtonOne.snp_bottom).offset(10)
+            make.top.equalTo(self.answerButtonOne.snp_bottom).offset(buttonOffset)
             make.centerX.equalTo(self.view.snp_centerX)
         }
         
         answerButtonThree.snp_makeConstraints { (make) -> Void in
-            make.height.equalTo(44)
+            make.height.equalTo(buttonHeight)
             make.width.equalTo(screenWidth * 0.6)
-            make.top.equalTo(self.answerButtonTwo.snp_bottom).offset(10)
+            make.top.equalTo(self.answerButtonTwo.snp_bottom).offset(buttonOffset)
             make.centerX.equalTo(self.view.snp_centerX)
         }
         
         answerButtonFour.snp_makeConstraints { (make) -> Void in
-            make.height.equalTo(44)
+            make.height.equalTo(buttonHeight)
             make.width.equalTo(screenWidth * 0.6)
-            make.top.equalTo(self.answerButtonThree.snp_bottom).offset(10)
+            make.top.equalTo(self.answerButtonThree.snp_bottom).offset(buttonOffset)
             make.centerX.equalTo(self.view.snp_centerX)
         }
         
         discoverButton.snp_makeConstraints { (make) -> Void in
-            make.height.equalTo(44)
+            make.height.equalTo(buttonHeight)
             make.width.equalTo(screenWidth * 0.6)
             make.top.equalTo(self.answerButtonFour.snp_bottom).offset(20)
             make.centerX.equalTo(challengeTextView.snp_centerX)

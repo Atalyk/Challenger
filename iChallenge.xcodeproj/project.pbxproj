@@ -15,6 +15,7 @@
 		845086101D56E3FE00929F2E /* ReorderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450860F1D56E3FE00929F2E /* ReorderTableViewCell.swift */; };
 		8450A3E41D52D83000B1C80F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450A3E31D52D83000B1C80F /* LoginViewController.swift */; };
 		8450A3E61D52D84300B1C80F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450A3E51D52D84300B1C80F /* RegisterViewController.swift */; };
+		8456F9891D5F6E9A0022BFE9 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456F9881D5F6E9A0022BFE9 /* ResetViewController.swift */; };
 		845BAD931D1E8C0400DAEE64 /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BAD921D1E8C0400DAEE64 /* ChallengeViewController.swift */; };
 		84A9949A1D23891D00F32E27 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A994991D23891D00F32E27 /* Colors.swift */; };
 		84C718961D1D40EE00965C75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C718951D1D40EE00965C75 /* AppDelegate.swift */; };
@@ -55,6 +56,7 @@
 		8450860F1D56E3FE00929F2E /* ReorderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReorderTableViewCell.swift; sourceTree = "<group>"; };
 		8450A3E31D52D83000B1C80F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8450A3E51D52D84300B1C80F /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		8456F9881D5F6E9A0022BFE9 /* ResetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
 		845BAD921D1E8C0400DAEE64 /* ChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
 		84A994991D23891D00F32E27 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		84C718921D1D40EE00965C75 /* Challenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +178,7 @@
 				8450A3E31D52D83000B1C80F /* LoginViewController.swift */,
 				8450A3E51D52D84300B1C80F /* RegisterViewController.swift */,
 				843F8F561D58F0FD00578F88 /* ArticleViewController.swift */,
+				8456F9881D5F6E9A0022BFE9 /* ResetViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				845BAD931D1E8C0400DAEE64 /* ChallengeViewController.swift in Sources */,
 				84C718961D1D40EE00965C75 /* AppDelegate.swift in Sources */,
 				843F2BBD1D4B81D900FC61EB /* BrainView.swift in Sources */,
+				8456F9891D5F6E9A0022BFE9 /* ResetViewController.swift in Sources */,
 				845086101D56E3FE00929F2E /* ReorderTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -558,7 +562,7 @@
 			baseConfigurationReference = A28913FDD515446A6458DE73 /* Pods-iChallenge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				INFOPLIST_FILE = iChallenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -573,7 +577,7 @@
 			baseConfigurationReference = EE73AC05A14FABEA222E505E /* Pods-iChallenge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				INFOPLIST_FILE = iChallenge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

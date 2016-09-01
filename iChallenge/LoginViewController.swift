@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
     lazy var loginLine = UIView()
     lazy var signInButton = UIButton()
     lazy var signUpButton = UIButton()
+    lazy var resetPasswordButton = UIButton()
     lazy var messageLabel = UILabel()
     lazy var appLabel = UILabel()
     
@@ -29,6 +30,9 @@ class LoginViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         setup()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -67,6 +71,11 @@ class LoginViewController: UIViewController {
         signInButton.titleLabel?.textAlignment = .Center
         signInButton.addTarget(self, action: #selector(LoginViewController.loginUser), forControlEvents: .TouchUpInside)
         
+        resetPasswordButton.setTitle("Forgot Password?", forState: .Normal)
+        resetPasswordButton.titleLabel?.font = UIFont(name: "Helvetica", size: 14)
+        resetPasswordButton.titleLabel?.textAlignment = .Center
+        resetPasswordButton.addTarget(self, action: #selector(LoginViewController.resetPasswordButtonPressed), forControlEvents: .TouchUpInside)
+        
         signUpButton.setTitle("New Member? Sign Up!", forState: .Normal)
         signUpButton.titleLabel?.font = UIFont(name: "Helvetica", size: 14)
         signUpButton.titleLabel?.textAlignment = .Center
@@ -88,6 +97,7 @@ class LoginViewController: UIViewController {
         self.view.addSubview(loginView)
         self.view.addSubview(loginLine)
         self.view.addSubview(usernameTextfield)
+        self.view.addSubview(resetPasswordButton)
         self.view.addSubview(passwordTextfield)
         self.view.addSubview(signInButton)
         self.view.addSubview(signUpButton)
@@ -146,6 +156,13 @@ class LoginViewController: UIViewController {
             make.height.equalTo(30)
         }
         
+        resetPasswordButton.snp_makeConstraints { (make) -> Void in
+            make.centerX.equalTo(self.loginView.snp_centerX)
+            make.top.equalTo(self.signInButton.snp_bottom).offset(15)
+            make.width.equalTo(self.loginView.snp_width)
+            make.height.equalTo(30)
+        }
+        
         messageLabel.snp_makeConstraints { (make) -> Void in
             make.centerX.equalTo(self.loginView.snp_centerX)
             make.top.equalTo(self.signInButton.snp_bottom).offset(20)
@@ -169,6 +186,11 @@ class LoginViewController: UIViewController {
         self.presentViewController(viewController, animated: true, completion: nil)
     }
     
+    func resetPasswordButtonPressed() {
+        let viewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ResetPassword")
+        self.presentViewController(viewController, animated: true, completion: nil)
+    }
+    
     func loginUser() {
         PFUser.logInWithUsernameInBackground(usernameTextfield.text!.lowercaseString, password: passwordTextfield.text!) {
             (user: PFUser?, error: NSError?) -> Void in
@@ -185,6 +207,11 @@ class LoginViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
 }

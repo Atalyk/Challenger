@@ -50,7 +50,8 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        self.refreshControl.addTarget(self, action: #selector(FeedViewController.notLoggedIn), forControlEvents: .ValueChanged)
+        self.refreshControl.addTarget(self, action: #selector(FeedViewController.notLoggedIn
+            ), forControlEvents: .ValueChanged)
         collectionView.addSubview(refreshControl)
         
         collectionView.delegate = self
@@ -251,12 +252,14 @@ class FeedViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     showMenu = true
                     self.collectionView.scrollEnabled = true
                 case UISwipeGestureRecognizerDirection.Right:
-                    UIView.animateWithDuration(0.5, animations: {[weak self] in
-                        self!.reorderView.frame = CGRectMake(0, 0, self!.screenWidth * 0.5, self!.screenHeight)
-                        self!.collectionView.frame = CGRectMake(self!.screenWidth * 0.5, 0, self!.screenWidth, self!.screenHeight)
-                        })
-                    showMenu = false
-                    self.collectionView.scrollEnabled = false
+                    if self.collectionView.frame.origin.y == 0 {
+                        UIView.animateWithDuration(0.5, animations: {[weak self] in
+                            self!.reorderView.frame = CGRectMake(0, 0, self!.screenWidth * 0.5, self!.screenHeight)
+                            self!.collectionView.frame = CGRectMake(self!.screenWidth * 0.5, 0, self!.screenWidth, self!.screenHeight)
+                            })
+                        showMenu = false
+                        self.collectionView.scrollEnabled = false
+                    }
                 default:
                     break
                 }
